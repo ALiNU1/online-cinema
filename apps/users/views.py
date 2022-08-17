@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import redirect, render
 from apps.settings.models import Setting
 from apps.users.models import User
@@ -31,3 +32,8 @@ def register(request):
         'setting' : setting,
     }
     return render(request, 'users/register.html', context)
+=======
+from django.shortcuts import render
+
+# Create your views here.
+>>>>>>> fbad417bf1a3a52ae6033210a347b54d46757b2a

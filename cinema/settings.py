@@ -60,7 +60,11 @@ ROOT_URLCONF = 'cinema.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [],
+=======
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+>>>>>>> fbad417bf1a3a52ae6033210a347b54d46757b2a
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +76,10 @@ TEMPLATES = [
         },
     },
 ]
+<<<<<<< HEAD
 
+=======
+>>>>>>> fbad417bf1a3a52ae6033210a347b54d46757b2a
 WSGI_APPLICATION = 'cinema.wsgi.application'
 
 
@@ -117,14 +124,29 @@ USE_I18N = True
 
 USE_TZ = True
 
+<<<<<<< HEAD
 
 AUTH_USER_MODEL = "users_management.User" 
 AUTH_USER_MODEL = 'users.User'
 
+=======
+AUTH_USER_MODEL = "users_management.User"
+AUTH_USER_MODEL = 'users.User'
+
+
+>>>>>>> fbad417bf1a3a52ae6033210a347b54d46757b2a
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
+=======
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+>>>>>>> fbad417bf1a3a52ae6033210a347b54d46757b2a
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
