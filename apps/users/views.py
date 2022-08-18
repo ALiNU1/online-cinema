@@ -16,7 +16,7 @@ def register(request):
                 user = User.objects.create(email = email)
                 user.set_password(password1)
                 user.save()
-                return redirect('user_login')
+                return redirect('index')
             except:
                 return HttpResponse("Неправильные данные")
         else:
@@ -25,4 +25,4 @@ def register(request):
     context = {
         'setting' : setting,
     }
-    return render(request, 'sing-up.html', context)
+    return render(request, 'register.html', context)
