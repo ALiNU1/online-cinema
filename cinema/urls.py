@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path,include
-
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
+
     path('', include('apps.settings.urls')),
     path('', include('apps.users.urls')),
-=======
->>>>>>> fbad417bf1a3a52ae6033210a347b54d46757b2a
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
