@@ -1,6 +1,10 @@
 from datetime import date
 from django.db import models
 
+from apps.categories.models import Category
+# Create your models here.
+
+
 # Create your models here.
 class Category(models.Model):
     """Категории"""
@@ -14,6 +18,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
+
 
 
 class Actor(models.Model):
