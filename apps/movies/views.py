@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Movie, Category
+from apps.settings.models import Setting
 from .forms import MovieCreateForm
+from django.db.models import Q
 
 # Create your views here.
 def movie_create(request):
