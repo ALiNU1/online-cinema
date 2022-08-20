@@ -152,9 +152,15 @@
                 <li>
                     <a href="contact.html">contact</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="header-button pr-0">
-                    <a href="{% url 'register' %}">join us</a>
+                    <a href="{% url 'register' %}">{{ user.username }}</a>
                 </li>
+                {% else %}
+                <li class="header-button pr-0">
+                    <a href="{% url 'register' %}">loin us</a>
+                </li>
+                {% endif %}
             </ul>
             <div class="header-bar d-lg-none">
                 <span></span>
