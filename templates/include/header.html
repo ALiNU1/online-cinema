@@ -4,9 +4,9 @@
     <div class="container">
         <div class="header-wrapper">
             <div class="logo">
-                <!-- <a href="index.html">
+                <a href="{% url 'index' %}">
                     <img src="{% static './assets/images/logo/logo.png '%}" alt="logo">
-                </a> -->
+                </a>
             </div>
             <ul class="menu">
                 <li>
@@ -125,16 +125,10 @@
                             <a href="about.html">About Us</a>
                         </li>
                         <li>
-                            <a href="apps-download.html">Apps Download</a>
-                        </li>
-                        <li>
-                            <a href="sign-in.html">Sign In</a>
+                            <a href="{% url 'login' %}">Sign In</a>
                         </li>
                         <li>
                             <a href="{% url 'register' %}">Sign Up</a>
-                        </li>
-                        <li>
-                            <a href="404.html">404</a>
                         </li>
                     </ul>
                 </li>
@@ -154,11 +148,16 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="header-button pr-0">
-                    <a href="{% url 'register' %}">{{ user.username }}</a>
+                    <a href="#0">{{ user.username }}</a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="{% url 'logout' %}">LogOut</a>
+                        </li>
+                    </ul>
                 </li>
                 {% else %}
                 <li class="header-button pr-0">
-                    <a href="{% url 'register' %}">loin us</a>
+                    <a href="{% url 'register' %}">join us</a>
                 </li>
                 {% endif %}
             </ul>
