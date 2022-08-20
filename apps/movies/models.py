@@ -1,6 +1,5 @@
 from datetime import date
 from django.db import models
-
 from apps.categories.models import Category
 # Create your models here.
 
@@ -86,7 +85,7 @@ class Movie(models.Model):
     fees_in_world = models.PositiveIntegerField(
         "Сборы в мире", default=0, help_text="указывать сумму в долларах"
     )
-    category = models.ForeignKey(Category, verbose_name="Категория",  null=True, on_delete= models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name="Категория",blank=True, null=True, on_delete= models.CASCADE)
     url = models.SlugField(max_length=130, unique=True)
     draft = models.BooleanField("Черновик", default=False)
 

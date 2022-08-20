@@ -6,7 +6,7 @@ from django.db.models import Q
 
 # Create your views here.
 def movie_create(request):
-    form = MovieCreateForm(request.POST or None)
+    form = MovieCreateForm(request.POST)
     if form.is_valid():
         form.save()
         return redirect('index')
