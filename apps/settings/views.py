@@ -6,9 +6,9 @@ from apps.movies.models import Movie
 
 def index(request):
     setting = Setting.objects.latest('id')
-    movie = Movie.objects.all().order_by('?')
+    movies = Movie.objects.all().order_by('?')
     context = {
         'setting' : setting,
-        'movie' : movie
+        'movies' : movies
     }
     return render(request, 'index.html', context)
