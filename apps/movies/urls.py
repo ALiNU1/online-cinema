@@ -1,4 +1,6 @@
 from django.urls import path
-from .views import movie_create
+from .views import movie_create, view_all
 
-path('create/', movie_create, name="create"),
+urlpatterns = [
+    path('create/', movie_create, name="create"),
+]
