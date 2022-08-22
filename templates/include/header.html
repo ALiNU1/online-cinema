@@ -121,6 +121,7 @@
                 <li>
                     <a href="#0">Вход</a>
                     <ul class="submenu">
+                        {% if user.is_authenticated %}
                         <li>
                             <a href="about.html">О нас</a>
                         </li>
@@ -131,6 +132,11 @@
                             <a href="{% url 'register' %}">Зарегистрироваться</a>
                         </li>
                     </ul>
+                    {% else %}
+                        <li>
+                            <a href="about.html">О нас</a>
+                        </li>
+                    {% endif %}
                 </li>
                 <li>
                     <a href="#0">blog</a>
@@ -147,6 +153,7 @@
                     <a href="contact.html">contact</a>
                 </li>
                 {% if user.is_authenticated %}
+                
                 <li class="header-button pr-0">
                     <a href="#0">{{ user.username }}</a>
                     <ul class="submenu">
@@ -154,11 +161,9 @@
                             <a href="{% url 'logout' %}">LogOut</a>
                         </li>
                     </ul>
-                </li>
+                </li>   
                 {% else %}
-                <li class="header-button pr-0">
-                    <a href="{% url 'register' %}">join us</a>
-                </li>
+                
                 {% endif %}
             </ul>
             <div class="header-bar d-lg-none">
