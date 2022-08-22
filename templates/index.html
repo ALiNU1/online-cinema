@@ -316,6 +316,7 @@
                         </div>
                         <div class="row mb-30-none justify-content-center">
                             
+                            {% for movie in movies %}
                             <div class="col-sm-6 col-lg-4">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
@@ -324,87 +325,29 @@
                                         </a>
                                     </div>
                                     <div class="movie-content bg-one">
-                                        {% for movie in movies %}
                                         <h5 class="title m-0">
                                             <a href="#0">{{ movie.title }}</a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>
                                                 <div class="thumb">
-                                                    <img src="" alt="movie">
+                                                    <img src="{% static './assets/images/movie/tomato.png'%}" alt="movie">
                                                 </div>
                                                 <span class="content">88%</span>
                                             </li>
                                             <li>
                                                 <div class="thumb">
-                                                    <img src="{{ movie.poster.url }}" alt="movie">
+                                                    <img src="{% static './assets/images/movie/cake.png'%}" alt="movie">
                                                 </div>
                                                 <span class="content">88%</span>
                                             </li>
                                         </ul>
-                                        {% endfor %}
+                                        
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
                             
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="movie-grid">
-                                    <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="{% static './assets/images/movie/movie02.jpg'%}" alt="movie">
-                                        </a>
-                                    </div>
-                                    <div class="movie-content bg-one">
-                                        <h5 class="title m-0">
-                                            <a href="#0">mars</a>
-                                        </h5>
-                                        <ul class="movie-rating-percent">
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="{% static './assets/images/movie/tomato.png'%}" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="{% static './assets/images/movie/cake.png'%}" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="movie-grid">
-                                    <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="{% static './assets/images/movie/movie03.jpg'%}" alt="movie">
-                                        </a>
-                                    </div>
-                                    <div class="movie-content bg-one">
-                                        <h5 class="title m-0">
-                                            <a href="#0">venus</a>
-                                        </h5>
-                                        <ul class="movie-rating-percent">
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="{% static './assets/images/movie/tomato.png'%}" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                            <li>
-                                                <div class="thumb">
-                                                    <img src="{% static './assets/images/movie/cake.png'%}" alt="movie">
-                                                </div>
-                                                <span class="content">88%</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="article-section padding-bottom">
                         <div class="section-header-1">
                             <h2 class="title">events</h2>
