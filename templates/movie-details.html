@@ -27,27 +27,24 @@
         <div class="container">
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
-                    <img src="{% static './assets/images/movie/venus.jpg' %}" alt="movie">
+                    <img src="{{ movie.poster.url }}" alt="movie">
                     <a href="https://www.youtube.com/embed/KGeBMAgc46E" class="video-popup">
                         <img src="{% static './assets/images/movie/video-button.png' %}" alt="movie">
                     </a>
                 </div>
                 <div class="details-banner-content offset-lg-3">
-                    <h3 class="title">Venus</h3>
+                    <h3 class="title">{{ movie.title }}</h3>
                     <div class="tags">
-                        <a href="#0">English</a>
-                        <a href="#0">Hindi</a>
-                        <a href="#0">Telegu</a>
-                        <a href="#0">Tamil</a>
+                        <a href="#0">{{ movie.tagline }}</a>
                     </div>
-                    <a href="#0" class="button">horror</a>
+                    <a href="#0" class="button">{{ movie.genres }}</a>
                     <div class="social-and-duration">
                         <div class="duration-area">
                             <div class="item">
-                                <i class="fas fa-calendar-alt"></i><span>06 Dec, 2020</span>
+                                <i class="fas fa-calendar-alt"></i><span>{{ movie.world_premiere }}</span>
                             </div>
                             <div class="item">
-                                <i class="far fa-clock"></i><span>2 hrs 50 mins</span>
+                                <i class="far fa-clock"></i><span>{{ movie.duration }} min</span>
                             </div>
                         </div>
                         <ul class="social-share">
@@ -192,39 +189,17 @@
                     </div>
                 </div>
                 <div class="col-lg-9 mb-50">
+                   
                     <div class="movie-details">
                         <h3 class="title">photos</h3>
                         <div class="details-photos owl-carousel">
+                            {% for movie_shot in movie_shots %}
                             <div class="thumb">
-                                <a href="{% static './assets/images/movie/movie-details01.jpg" class="img-pop">
-                                    <img src="./assets/images/movie/movie-details01.jpg" alt="movie">
+                                <a href="" class="img-pop">
+                                    <img src="{{ movie_shot.image.url }}" alt="movie">
                                 </a>
                             </div>
-                            <div class="thumb">
-                                <a href="{% static './assets/images/movie/movie-details02.jpg' %}" class="img-pop">
-                                    <img src="./assets/images/movie/movie-details02.jpg" alt="movie">
-                                </a>
-                            </div>
-                            <div class="thumb">
-                                <a href="{% static './assets/images/movie/movie-details03.jpg' %}" class="img-pop">
-                                    <img src="./assets/images/movie/movie-details03.jpg" alt="movie">
-                                </a>
-                            </div>
-                            <div class="thumb">
-                                <a href="{% static './assets/images/movie/movie-details01.jpg' %}" class="img-pop">
-                                    <img src="./assets/images/movie/movie-details01.jpg' %}" alt="movie">
-                                </a>
-                            </div>
-                            <div class="thumb">
-                                <a href="./assets/images/movie/movie-details02.jpg" class="img-pop">
-                                    <img src="./assets/images/movie/movie-details02.jpg" alt="movie">
-                                </a>
-                            </div>
-                            <div class="thumb">
-                                <a href="{% static './assets/images/movie/movie-details03.jpg' %}" class="img-pop">
-                                    <img src="{% static './assets/images/movie/movie-details03.jpg' %}" alt="movie">
-                                </a>
-                            </div>
+                            {% endfor %}
                         </div>
                         <div class="tab summery-review">
                             <ul class="tab-menu">
@@ -238,8 +213,8 @@
                             <div class="tab-area">
                                 <div class="tab-item active">
                                     <div class="item">
-                                        <h5 class="sub-title">Synopsis</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula eros sit amet est tincidunt aliquet. Fusce laoreet ligula ac ultrices eleifend. Donec hendrerit fringilla odio, ut feugiat mi convallis nec. Fusce elit ex, blandit vitae mattis sit amet, iaculis ac elit. Ut diam mauris, viverra sit amet dictum vel, aliquam ac quam. Ut mi nisl, fringilla sit amet erat et, convallis porttitor ligula. Sed auctor, orci id luctus venenatis, dui dolor euismod risus, et pharetra orci lectus quis sapien. Duis blandit ipsum ac consectetur scelerisque. </p>
+                                        <h5 class="sub-title">Описание</h5>
+                                        <p>{{ movie.description }}</p>
                                     </div>
                                     <div class="item">
                                         <div class="header">
@@ -531,68 +506,6 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="footer-top">
-                <div class="logo">
-                    <a href="index-1.html">
-                        <img src="./assets/images/footer/footer-logo.png" alt="footer">
-                    </a>
-                </div>
-                <ul class="social-icons">
-                    <li>
-                        <a href="#0">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0" class="active">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0">
-                            <i class="fab fa-pinterest-p"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0">
-                            <i class="fab fa-google"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#0">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer-bottom">
-                <div class="footer-bottom-area">
-                    <div class="left">
-                        <p>Copyright © 2020.All Rights Reserved By <a href="#0">Boleto </a></p>
-                    </div>
-                    <ul class="links">
-                        <li>
-                            <a href="#0">About</a>
-                        </li>
-                        <li>
-                            <a href="#0">Terms Of Use</a>
-                        </li>
-                        <li>
-                            <a href="#0">Privacy Policy</a>
-                        </li>
-                        <li>
-                            <a href="#0">FAQ</a>
-                        </li>
-                        <li>
-                            <a href="#0">Feedback</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- ==========Newslater-Section========== -->
-
+        
 {%include 'include/footer.html'%}
 {%endblock%}

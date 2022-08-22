@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Movie, Category
+from .models import Movie, Category, MovieShots
 from apps.settings.models import Setting
 from apps.movies.forms import MovieCreateForm
 from django.db.models import Q
@@ -18,8 +18,10 @@ def movie_create(request):
 def movie_details(request, id):
     movie = Movie.objects.get(id = id)
     setting= Setting.objects.latest('id')
+    movie_shots = MovieShots.objects.all().filter(movie = movie)
     context={
         'movie': movie,
         'setting': setting, 
+        'movie_shots': movie_shots,
     }
     return render(request, 'movie-details.html', context)
