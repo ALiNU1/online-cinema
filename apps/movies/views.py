@@ -14,3 +14,12 @@ def movie_create(request):
         'form': form,
     }
     return render(request, 'create.html', context)
+
+def movie_details(request, id):
+    movie = Movie.objects.get(id = id)
+    setting= Setting.objects.latest('id')
+    context={
+        'movie': movie,
+        'setting': setting, 
+    }
+    return render(request, 'movie-details.html', context)

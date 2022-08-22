@@ -320,13 +320,13 @@
                             <div class="col-sm-6 col-lg-4">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
-                                        <a href="#0">
+                                        <a href="{% url 'movie_details' movie.id %}">
                                             <img src="{{ movie.poster.url }}" alt="movie">
                                         </a>
                                     </div>
                                     <div class="movie-content bg-one">
                                         <h5 class="title m-0">
-                                            <a href="#0">{{ movie.title }}</a>
+                                            <a href="{% url 'movie_details' movie.id %}">{{ movie.title }}</a>
                                         </h5>
                                         <ul class="movie-rating-percent">
                                             <li>

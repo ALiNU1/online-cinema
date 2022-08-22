@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('apps.settings.urls')),
     path('accounts/', include('allauth.urls')),
     path('', include('apps.users.urls')),
+    path('post/', include('apps.movies.urls')),
     path('create/', movie_create, name="create"),
     path('logout/', LogoutView.as_view(next_page = 'index'), name="logout"),
 ]
