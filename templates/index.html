@@ -28,14 +28,14 @@
         <div class="banner-bg bg_img bg-fixed" data-background="{% static './assets/images/banner/banner01.jpg'%}"></div>
         <div class="container">
             <div class="banner-content">
-                <h1 class="title  cd-headline clip"><span class="d-block">book your</span> tickets for 
+                <small><h3 class="title  cd-headline clip"><span class="d-block">Добро пожаловать!</span>Отличного
                     <span class="color-theme cd-words-wrapper p-0 m-0">
-                        <b class="is-visible">Movie</b>
-                        <b>Event</b>
-                        <b>Sport</b>
+                        <b class="is-visible">Настроения!</b>
+                        <b>Времяпровождения!</b>
+                        <b>Отдыха!</b>
                     </span>
-                </h1>
-                <p>Safe, secure, reliable ticketing.Your ticket to live entertainment!</p>
+                </h3></small>
+                <p>Любить, Дружить, и просто Жить!</p>
             </div>
         </div>
     </section>
@@ -48,8 +48,8 @@
                 <div class="row align-items-center mb--20">
                     <div class="col-lg-6 mb-20">
                         <div class="search-ticket-header">
-                            <h6 class="category">welcome to Boleto </h6>
-                            <h3 class="title">what are you looking for</h3>
+                            <h6 class="category">Добро пожаловть в наш онлайн-кинотеатр</h6>
+                            <h3 class="title">Найдите то, что по душе</h3>
                         </div>
                     </div>
                     <div class="col-lg-6 mb-20">
@@ -75,11 +75,12 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="tab-area">
                     <div class="tab-item active">
-                        <form class="ticket-search-form">
+                        <form class="ticket-search-form" action="{% url 'movie_search' %}">{%csrf_token%}
                             <div class="form-group large">
-                                <input type="text" placeholder="Search for Movies">
+                                <input type="text" name="key" placeholder="Поиск фильмов">
                                 <button type="submit"><i class="fas fa-search"></i></button>
                             </div>
                             <div class="form-group">
@@ -311,12 +312,13 @@
                     <div class="article-section padding-bottom">
                         
                         <div class="section-header-1">
-                            <h2 class="title">movies</h2>
+                            <h2 class="title">Фильмы</h2>
                             <a class="view-all" href="">View All</a>
                         </div>
                         <div class="row mb-30-none justify-content-center">
                             
                             {% for movie in movies %}
+                            {%if movie.premiere == False%}
                             <div class="col-sm-6 col-lg-4">
                                 <div class="movie-grid">
                                     <div class="movie-thumb c-thumb">
@@ -346,28 +348,31 @@
                                     </div>
                                 </div>
                             </div>
+                            {%endif%}
                             {% endfor %}
                             
                     <div class="article-section padding-bottom">
                         <div class="section-header-1">
-                            <h2 class="title">events</h2>
+                            <h3 class="title">Премьеры недели</h3>
                             <a class="view-all" href="events.html">View All</a>
                         </div>
                         <div class="row mb-30-none justify-content-center">
+                            {% for movie in movies%}
+                            {% if movie.premiere == True%}
                             <div class="col-sm-6 col-lg-4">
                                 <div class="event-grid">
                                     <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="{% static './assets/images/event/event01.jpg'%}" alt="event">
+                                        <a href="{% url 'movie_details' movie.id %}">
+                                            <img src="{{movie.poster.url}}" alt="event">
                                         </a>
                                         <div class="event-date">
-                                            <h6 class="date-title">28</h6>
-                                            <span>Dec</span>
+                                            <h6 class="date-title">3</h6>
+                                            <span>Дня</span>
                                         </div>
                                     </div>
                                     <div class="movie-content bg-one">
                                         <h5 class="title m-0">
-                                            <a href="#0">Digital Economy Conference 2020</a>
+                                            <a href="{% url 'movie_details' movie.id%}">{{movie.title}}</a>
                                         </h5>
                                         <div class="movie-rating-percent">
                                             <span>327 Montague Street</span>
@@ -375,53 +380,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="event-grid">
-                                    <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="{% static './assets/images/event/event02.jpg'%}" alt="event">
-                                        </a>
-                                        <div class="event-date">
-                                            <h6 class="date-title">28</h6>
-                                            <span>Dec</span>
-                                        </div>
-                                    </div>
-                                    <div class="movie-content bg-one">
-                                        <h5 class="title m-0">
-                                            <a href="#0">web design conference 2020</a>
-                                        </h5>
-                                        <div class="movie-rating-percent">
-                                            <span>327 Montague Street</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="event-grid">
-                                    <div class="movie-thumb c-thumb">
-                                        <a href="#0">
-                                            <img src="{% static './assets/images/event/event03.jpg'%}" alt="event">
-                                        </a>
-                                        <div class="event-date">
-                                            <h6 class="date-title">28</h6>
-                                            <span>Dec</span>
-                                        </div>
-                                    </div>
-                                    <div class="movie-content bg-one">
-                                        <h5 class="title m-0">
-                                            <a href="#0">digital thinkers meetup</a>
-                                        </h5>
-                                        <div class="movie-rating-percent">
-                                            <span>327 Montague Street</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            {%endif%}
+                            {%endfor%}         
                     <div class="article-section">
                         <div class="section-header-1">
-                            <h2 class="title">sports</h2>
+                            <h3 class="title">Популярное</h3>
                             <a class="view-all" href="sports.html">View All</a>
                         </div>
                         <div class="row mb-30-none justify-content-center">

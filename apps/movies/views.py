@@ -25,3 +25,15 @@ def movie_details(request, id):
         'movie_shots': movie_shots,
     }
     return render(request, 'movie-details.html', context)
+
+def movie_search(request):
+    movies= Movie.objects.all()
+    setting= Setting.objects.latest('id')
+    qury_object= request.GET.get('key')
+    if qury_object:
+        posts = Movie.objects.filter(Q(title__icontains = qury_object) | Q(description__icontains = qury_object))
+    context = {
+        'setting' : setting,
+        'movies' : movies
+    }
+    return render(request, 'search.html', context)
