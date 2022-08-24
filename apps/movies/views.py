@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from .models import Movie, Category, MovieShots
 from apps.settings.models import Setting
 from apps.movies.forms import MovieCreateForm,MovieUpdateForm
@@ -50,3 +50,14 @@ def movie_update(request, id):
         'form' : form,
     }
     return render(request, 'update.html', context)
+
+def movie_delete(request, id):
+    context ={}
+ 
+    obj = get_object_or_404(Movie, id = id)
+    if request.method =="POST":
+
+        obj.delete()
+        return HttpResponseRedirect("/")
+ 
+    return render(request, "delete.html", context)

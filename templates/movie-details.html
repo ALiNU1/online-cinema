@@ -109,7 +109,7 @@
                 <a href="{% url 'movie_update' movie.id %}" class="custom-button">Обновить</a>
                 </form>
                 <form method="POST">
-                    <a href="#0" class="custom-button">Удалить</a>
+                    <a href="{% url 'movie_delete' movie.id %}" class="custom-button">Удалить</a>
                 </form>
                 {% else %}
 

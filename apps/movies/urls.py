@@ -1,10 +1,11 @@
 from unicodedata import name
 from django.urls import path
-from apps.movies.views import movie_create,  movie_details, movie_search, movie_update
+from apps.movies.views import movie_create,  movie_details, movie_search, movie_update, movie_delete
 
 urlpatterns = [
     path('create/', movie_create, name="create"),
     path('<int:id>', movie_details, name="movie_details"),
     path('search/', movie_search, name= "movie_search"),
     path('update/<int:id>', movie_update, name="movie_update"),
+    path('delete/<int:id>', movie_delete, name="movie_delete")
 ]
