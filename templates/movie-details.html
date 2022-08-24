@@ -118,7 +118,7 @@
                 </div>
                 {% if user.is_superuser %}
                 <form method="POST">
-                <a href="#0" class="custom-button">Обновить</a>
+                <a href="{% url 'movie_update' movie.id %}" class="custom-button">Обновить</a>
                 </form>
                 <form method="POST">
                     <a href="#0" class="custom-button">Удалить</a>

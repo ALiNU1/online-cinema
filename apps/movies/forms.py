@@ -5,3 +5,8 @@ class MovieCreateForm(forms.ModelForm):
     class Meta:
         model = Movie
         fields = "__all__"
+
+class MovieUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Movie
+        fields = "__all__"

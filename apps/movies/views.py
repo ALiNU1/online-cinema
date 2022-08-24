@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Movie, Category, MovieShots
 from apps.settings.models import Setting
-from apps.movies.forms import MovieCreateForm
+from apps.movies.forms import MovieCreateForm,MovieUpdateForm
 from django.db.models import Q
+from django.http import HttpResponse
 
 # Create your views here.
 def movie_create(request):
@@ -37,3 +38,15 @@ def movie_search(request):
         'movies' : movies
     }
     return render(request, 'search.html', context)
+
+
+def movie_update(request, id):
+    movie = Movie.objects.get(id = id)
+    form = MovieUpdateForm(request.POST or None, instance=movie)
+    if form.is_valid():
+        form.save()
+        return redirect('movie_details', movie.id)
+    context = {
+        'form' : form,
+    }
+    return render(request, 'update.html', context)
