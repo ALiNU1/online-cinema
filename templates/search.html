@@ -25,7 +25,9 @@
     <!-- ==========Banner-Section========== -->
     <section class="details-banner bg_img" data-background="./assets/images/banner/banner03.jpg">
         <div class="container">
+            {% for movie in movies %}
             <div class="details-banner-wrapper">
+                
                 <div class="details-banner-thumb">
                     <img src="{{ movie.poster.url }}" alt="movie">
                     <a href="https://www.youtube.com/embed/KGeBMAgc46E" class="video-popup">
@@ -56,6 +58,7 @@
                         </ul>
                     </div>
                 </div>
+                {% endfor %}
             </div>
 
         </div>
