@@ -2,10 +2,11 @@
 {% load static%}
 {%block content%}
 {%include 'include/header.html'%}
-
-<div class="main">
+<div class="container">
+    <div style="padding: 50px;" class="row">
+<div class="main" style="margin-top: 70px;">
     <!-- Create a Form -->
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <!-- Security token by Django -->
         {% csrf_token %}
 
@@ -15,6 +16,6 @@
         <input type="submit" value="Update">
     </form>
 
-</div> 
+</div> </div></div>
 {%include 'include/footer.html'%}
 {%endblock%}

@@ -10,14 +10,12 @@ def register(request):
     if request.method == "POST":
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
-        email = request.POST.get('email')
         username = request.POST.get('username')
         phone = request.POST.get('phone')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-        profile_image = request.FILES.get('profile_image')
         if password1 == password2:
-                user = User.objects.create(first_name = first_name, last_name = last_name, email = email, phone = phone, username = username, profile_image = profile_image)
+                user = User.objects.create(first_name = first_name, last_name = last_name,hone = phone, username = username,)
                 user.set_password(password1)
                 user.save()
                 return redirect('index')
