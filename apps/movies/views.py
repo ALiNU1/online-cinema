@@ -61,3 +61,12 @@ def movie_delete(request, id):
         return HttpResponseRedirect("/")
  
     return render(request, "delete.html", context)
+
+def all_movies(request):
+    all_movies = Movie.objects.all()
+    setting = Setting.objects.latest('id')
+    context = {
+        'all_movies' : all_movies,
+        'setting' : setting,
+    }
+    return render(request, "movie-grid.html", context )
