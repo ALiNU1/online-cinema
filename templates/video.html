@@ -1,0 +1,16 @@
+{%extends 'homepage.html'%}
+{% load static%}
+{%block content%}
+<video
+id = "my-video"
+class = "video-js"
+controls
+preload = "auto"
+width="2000"
+height="670"
+data-setup ="{}"
+>
+<source src="{% url  'stream' movie.id %}" type="video/mp4"/>
+<source src="{% url  'stream' movie.id %}" type="video/webm"/>
+</video>
+{% endblock %}

@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
-from .models import Movie, Category, MovieShots
+from .models import Movie, Category, MovieShots, Video
 from apps.settings.models import Setting
 from apps.movies.forms import MovieCreateForm,MovieUpdateForm
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import StreamingHttpResponse
+from .services import open_file
 
 # Create your views here.
 def movie_create(request):
@@ -70,3 +71,29 @@ def all_movies(request):
         'setting' : setting,
     }
     return render(request, "movie-grid.html", context )
+
+def get_list_video(request):
+    return render(request, 'index.html', {'video_list':Video.objects.all()})
+
+def get_video(request, pk:int):
+    _video = get_object_or_404(Video, id=pk)
+    return render(request, "movie_details.html", {"video":_video})
+
+def get_streaming_video(request, pk: int):
+    file, status_code, content_length, content_range = open_file(request, pk)
+    response = StreamingHttpResponse(file, status=status_code, content_type='video/mp4')
+
+    response['Accept-Ranges'] = 'bytes'
+    response['Content-Length'] = str(content_length)
+    response['Cache-Control'] = 'no-cache'
+    response['Content-Range'] = content_range
+    return response
+
+def video_watch(request,id):
+    setting = Setting.objects.all()
+    movie  = Movie.objects.get(id = id)
+    context = {
+        'setting' : setting,
+        'movie' : movie,
+    }
+    return render(request, 'video.html', context)

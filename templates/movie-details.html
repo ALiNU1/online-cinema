@@ -28,10 +28,11 @@
             <div class="details-banner-wrapper">
                 <div class="details-banner-thumb">
                     <img src="{{ movie.poster.url }}" alt="movie">
-                    <a href="https://www.youtube.com/embed/KGeBMAgc46E" class="video-popup">
+                    <a href="{% url 'video' movie.id %}" class="video-popup">
                         <img src="{% static './assets/images/movie/video-button.png' %}" alt="movie">
                     </a>
                 </div>
+             
                 <div class="details-banner-content offset-lg-3">
                     <h3 class="title">{{ movie.title }}</h3>
                     <div class="tags">
@@ -62,6 +63,10 @@
     </section>
     <!-- ==========Banner-Section========== -->
 
+    <!-- viedo section -->
+   
+    <!-- video section end  -->
+
     <!-- ==========Book-Section========== -->
     <section class="book-section bg-one">
         <div class="container">
@@ -71,7 +76,8 @@
                         <div>
                             <!-- <div class="thumb">
                                 <img src="{% static './assets/images/movie/tomato2.png' %}" alt="movie">
-                            </div> -->
+                            </div>
+ 
                             <div>
                                 <span>{{ movie.budget }}$</span>
                             </div>
@@ -81,7 +87,7 @@
 
                     <div>
                         <div >
-                            <!-- <div class="thumb">
+                             <div class="thumb">
                                 <img src="./assets/images/movie/cake2.png" alt="movie">
                             </div> -->
                             <div >
@@ -107,6 +113,9 @@
                 {% if user.is_superuser %}
                 <form method="POST">
                 <a href="{% url 'movie_update' movie.id %}" class="custom-button">Обновить</a>
+                </form>
+                <form method="POST">
+                    <a href="{% url 'video_watch' movie.id %}" class="custom-button">Смотреть</a>
                 </form>
                 <form method="POST">
                     <a href="{% url 'movie_delete' movie.id %}" class="custom-button">Удалить</a>

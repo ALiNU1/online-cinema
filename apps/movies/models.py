@@ -1,6 +1,7 @@
 from datetime import date
 from django.db import models
 from apps.categories.models import Category
+from django.core.validators import FileExtensionValidator
 # Create your models here.
 
 
@@ -98,6 +99,23 @@ class Movie(models.Model):
     class Meta:
         verbose_name = "Фильм"
         verbose_name_plural = "Фильмы"
+
+class Video(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to = 'image/', blank = True, null = True)
+    file = models.FileField(
+        upload_to='video/',
+        validators=[FileExtensionValidator(allowed_extensions=['mp4'])]
+    )
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "Видео"
+        verbose_name_plural = "Видео"
 
 class MovieShots(models.Model):
     """Кадры из фильма"""
