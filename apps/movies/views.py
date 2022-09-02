@@ -21,22 +21,24 @@ def movie_details(request, id):
     movie = Movie.objects.get(id = id)
     setting= Setting.objects.latest('id')
     movie_shots = MovieShots.objects.all().filter(movie = movie)
+    film_video = Video.objects.get(movie=movie)
     context={
         'movie': movie,
         'setting': setting, 
         'movie_shots': movie_shots,
+        "film_video":film_video
     }
     return render(request, 'movie-details.html', context)
 
 def movie_search(request):
-    movies= Movie.objects.all()
-    setting= Setting.objects.latest('id')
-    qury_object= request.GET.get('key')
-    if qury_object:
-        posts = Movie.objects.filter(Q(title__icontains = qury_object) | Q(description__icontains = qury_object))
+    movies = Movie.objects.all()
+    qury_obj = request.GET.get('key')
+    home = Setting.objects.latest('id')
+    if qury_obj:
+        movies = Movie.objects.filter(Q(title__icontains = qury_obj))
     context = {
-        'setting' : setting,
-        'movies' : movies
+        'home' : home, 
+        'movies' : movies,
     }
     return render(request, 'search.html', context)
 
@@ -72,28 +74,28 @@ def all_movies(request):
     }
     return render(request, "movie-grid.html", context )
 
-def get_list_video(request):
-    return render(request, 'index.html', {'video_list':Video.objects.all()})
+# def get_list_video(request):
+#     return render(request, 'index.html', {'video_list':Video.objects.all()})
 
-def get_video(request, pk:int):
-    _video = get_object_or_404(Video, id=pk)
-    return render(request, "movie_details.html", {"video":_video})
+# def get_video(request, pk:int):
+#     _video = get_object_or_404(Video, id=pk)
+#     return render(request, "video.html", {"video":_video})
 
-def get_streaming_video(request, pk: int):
-    file, status_code, content_length, content_range = open_file(request, pk)
-    response = StreamingHttpResponse(file, status=status_code, content_type='video/mp4')
+# def get_streaming_video(request, pk: int):
+#     file, status_code, content_length, content_range = open_file(request, pk)
+#     response = StreamingHttpResponse(file, status=status_code, content_type='video/mp4')
 
-    response['Accept-Ranges'] = 'bytes'
-    response['Content-Length'] = str(content_length)
-    response['Cache-Control'] = 'no-cache'
-    response['Content-Range'] = content_range
-    return response
+#     response['Accept-Ranges'] = 'bytes'
+#     response['Content-Length'] = str(content_length)
+#     response['Cache-Control'] = 'no-cache'
+#     response['Content-Range'] = content_range
+#     return response
 
 def video_watch(request,id):
     setting = Setting.objects.all()
-    movie  = Movie.objects.get(id = id)
+    video  = Video.objects.get(id = id)
     context = {
         'setting' : setting,
-        'movie' : movie,
+        'video' : video,
     }
     return render(request, 'video.html', context)

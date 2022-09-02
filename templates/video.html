@@ -6,11 +6,11 @@ id = "my-video"
 class = "video-js"
 controls
 preload = "auto"
-width="2000"
-height="670"
+width="1600"
+height="850"
 data-setup ="{}"
 >
-<source src="{% url  'stream' movie.id %}" type="video/mp4"/>
-<source src="{% url  'stream' movie.id %}" type="video/webm"/>
+<source src="{{video.file.url}}" type="video/mp4"/>
+<source src="{{video.file.url}}" type="video/webm"/>
 </video>
 {% endblock %}

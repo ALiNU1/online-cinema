@@ -104,6 +104,7 @@ class Video(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to = 'image/', blank = True, null = True)
+    movie = models.ForeignKey(Movie,verbose_name="Фильм",blank=True, null=True, on_delete= models.CASCADE)
     file = models.FileField(
         upload_to='video/',
         validators=[FileExtensionValidator(allowed_extensions=['mp4'])]

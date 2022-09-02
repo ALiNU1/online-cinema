@@ -27,12 +27,8 @@
         <div class="container">
             {% for movie in movies %}
             <div class="details-banner-wrapper">
-                
                 <div class="details-banner-thumb">
                     <img src="{{ movie.poster.url }}" alt="movie">
-                    <a href="https://www.youtube.com/embed/KGeBMAgc46E" class="video-popup">
-                        <img src="{% static './assets/images/movie/video-button.png' %}" alt="movie">
-                    </a>
                 </div>
                 <div class="details-banner-content offset-lg-3">
                     <h3 class="title">{{ movie.title }}</h3>
@@ -58,68 +54,74 @@
                         </ul>
                     </div>
                 </div>
-                {% endfor %}
             </div>
-
         </div>
+        {% endfor %}
     </section>
     <!-- ==========Banner-Section========== -->
+
+    <!-- viedo section -->
+   
+    <!-- video section end  -->
 
     <!-- ==========Book-Section========== -->
     <section class="book-section bg-one">
         <div class="container">
             <div class="book-wrapper offset-lg-3">
                 <div class="left-side">
-                    <div class="item">
-                        <div class="item-header">
+                    <div style="margin-right: 15px;">
+                        <div>
                             <div class="thumb">
-                                <img src="{% static './assets/images/movie/tomato2.png' %}" alt="movie">
+                               <!-- <img src="{% static './assets/images/movie/tomato2.png' %}" alt="movie"> -->
                             </div>
-                            <div class="counter-area">
-                                <span class="counter-item odometer" data-odometer-final="88">0</span>
+ 
+                            <div>
+                                {% for movie in movies%}
+                                <span>{{ movie.budget }}$</span>
                             </div>
                         </div>
-                        <p>tomatometer</p>
+                        <p>Бюджет</p>
                     </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <div class="thumb">
-                                <img src="./assets/images/movie/cake2.png" alt="movie">
+
+                    <div>
+                        <div >
+                             <div class="thumb">
+                                <!-- <img src="./assets/images/movie/cake2.png" alt="movie"> -->
                             </div>
-                            <div class="counter-area">
-                                <span class="counter-item odometer" data-odometer-final="88">0</span>
+                            <div >
+                                <span>{{ movie.fees_in_world }}$</span>
                             </div>
                         </div>
-                        <p>audience Score</p>
+                        <p>Сбооры во всем мире</p>
                     </div>
-                    <div class="item">
+                    <div class="item" style="margin-bottom:15px ;">
                         <div class="item-header">
-                            <h5 class="title">4.5</h5>
-                            <div class="rated">
+                            <h5 class="title">5</h5>
+                            <!-- <div class="rated">
                                 <i class="fas fa-heart"></i>
                                 <i class="fas fa-heart"></i>
                                 <i class="fas fa-heart"></i>
                                 <i class="fas fa-heart"></i>
                                 <i class="fas fa-heart"></i>
-                            </div>
+                            </div> -->
                         </div>
                         <p>Users Rating</p>
                     </div>
-                    <div class="item">
-                        <div class="item-header">
-                            <div class="rated rate-it">
-                                <i class="fas fa-heart"></i>
-                                <i class="fas fa-heart"></i>
-                                <i class="fas fa-heart"></i>
-                                <i class="fas fa-heart"></i>
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <h5 class="title">0.0</h5>
-                        </div>
-                        <p><a href="#0">Rate It</a></p>
-                    </div>
                 </div>
-                <a href="#0" class="custom-button">book tickets</a>
+                {% endfor %}
+                {% for movie in movies %}
+                {% if user.is_superuser %}
+                <a href="{% url 'movie_update' movie.id %}" class="custom-button">Обновить</a>
+            
+                <a href="{% url 'video' movie.id %}" class="custom-button">Смотреть</a>
+                
+                 
+                <a href="{% url 'video' movie.id %}" class="custom-button">Удалить</a>
+               
+                {% else %}
+
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -209,15 +211,15 @@
                                 <li class="active">
                                     summery
                                 </li>
-                                <li>
-                                    user review <span>147</span>
-                                </li>
+                              
                             </ul>
                             <div class="tab-area">
                                 <div class="tab-item active">
                                     <div class="item">
+                                        {% for movie in movies%}
                                         <h5 class="sub-title">Описание</h5>
                                         <p>{{ movie.description }}</p>
+                                        {%endfor%}
                                     </div>
                                     <div class="item">
                                         <div class="header">
